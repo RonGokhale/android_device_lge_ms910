@@ -10,17 +10,6 @@ DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 $(call inherit-product, frameworks/native/build/phone-hdpi-512-dalvik-heap.mk)
 
-ifeq ($(TARGET_PREBUILT_KERNEL),)
-LOCAL_KERNEL := $(LOCAL_PATH)/kernel
-# Kernel Modules
-$(call inherit-product-if-exists, $(LOCAL_PATH)/prebuilt/modules/modules.mk)
-else
-LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
-endif
-
-PRODUCT_COPY_FILES += \
-    $(LOCAL_KERNEL):kernel
-
 $(call inherit-product, vendor/cm/config/common_full.mk)
 
 # use high-density artwork where available
@@ -166,7 +155,7 @@ PRODUCT_COPY_FILES += \
 
 # SDCard
 PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/prebuilt/root/vold.fstab:system/etc/vold.fstab
+    $(LOCAL_PATH)/prebuilt/etc/vold.fstab:system/etc/vold.fstab
 
 ## Wifi
 PRODUCT_COPY_FILES += \

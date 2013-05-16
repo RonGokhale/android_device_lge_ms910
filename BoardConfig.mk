@@ -31,7 +31,6 @@ BOARD_KERNEL_PAGESIZE := 2048
 BOARD_PAGE_SIZE := 2048
 
 TARGET_KERNEL_CONFIG := plague_defconfig 
-TARGET_PREBUILT_KERNEL := device/lge/ms910/kernel
 TARGET_KERNEL_CUSTOM_TOOLCHAIN := arm-eabi-4.4.3
 
 ## Partition sizes
