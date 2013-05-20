@@ -160,7 +160,6 @@ PRODUCT_COPY_FILES += \
 ## Wifi
 PRODUCT_COPY_FILES += \
 	$(LOCAL_PATH)/prebuilt/etc/wifi/wpa_supplicant.conf:system/etc/wifi/wpa_supplicant.conf \
-	$(LOCAL_PATH)/prebuilt/bin/wpa_supplicant:system/bin/wpa_supplicant \
 	$(LOCAL_PATH)/prebuilt/etc/wl/nvram.txt:system/etc/wl/nvram.txt \
 	$(LOCAL_PATH)/prebuilt/etc/wl/rtecdc.bin:system/etc/wl/rtecdc.bin \
 	$(LOCAL_PATH)/prebuilt/etc/wl/rtecdc-apsta.bin:system/etc/wl/rtecdc-apsta.bin \
@@ -168,6 +167,7 @@ PRODUCT_COPY_FILES += \
 
 PRODUCT_PACKAGES += \
 	wpa_cli \
+	wpa_supplicant \
 	hostapd \
 	hostapd_cli
 
