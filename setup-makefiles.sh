@@ -26,22 +26,23 @@ MAKEFILE=../../../$OUTDIR/$DEVICE-vendor-blobs.mk
 PRODUCT_COPY_FILES := \\
     $OUTDIR/proprietary/lib/liboncrpc.so:obj/lib/liboncrpc.so \\
     $OUTDIR/proprietary/lib/libnv.so:obj/lib/libnv.so \\
-    $OUTDIR/proprietary/lib/libaudio.so:obj/lib/libaudio.so \\
-    $OUTDIR/proprietary/lib/libv8.so:obj/lib/libv8.so
+    $OUTDIR/proprietary/lib/libaudio.so:obj/lib/libaudio.so
 
 PRODUCT_COPY_FILES += \\
 EOF
-
+echo " Copying files"
 LINEEND=" \\"
 COUNT=`cat proprietary-files.txt | grep -v ^# | grep -v ^$ | wc -l | awk {'print $1'}`
+echo " Adding to makefile"
 for FILE in `cat proprietary-files.txt | grep -v ^# | grep -v ^$`; do
     COUNT=`expr $COUNT - 1`
     if [ $COUNT = "0" ]; then
         LINEEND=""
     fi
     echo "    $OUTDIR/proprietary/$FILE:system/$FILE$LINEEND" >> $MAKEFILE
-done
 
+done
+echo " Adding to ms910-vendor.mk"
 (cat << EOF) > ../../../$OUTDIR/$DEVICE-vendor.mk
 # Copyright (C) 2012 The CyanogenMod Project
 #
@@ -96,3 +97,4 @@ EOF
 
 USE_CAMERA_STUB := false
 EOF
+echo "done"
